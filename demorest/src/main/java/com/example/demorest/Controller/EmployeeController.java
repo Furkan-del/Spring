@@ -1,6 +1,6 @@
 package com.example.demorest.Controller;
 
-import com.example.demorest.Service.impl.DemoService;
+import com.example.demorest.Service.DemoService;
 
 import com.example.demorest.model.Employee;
 
@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // this class is our controller class like an Apı Layer
@@ -27,17 +26,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/employeepost")
-    List<Employee>  postEmployee() {
-        Employee employee = new Employee();
-        employee.setName("DONALD");
-        employee.setRole("serverant");
-        Employee employee2 = new Employee();
-        employee2.setName("mojo");
-        employee2.setRole("tester");
-        List<Employee> list = new ArrayList<>();
-        list.add(employee);
-        list.add(employee2);
-        return demoService.postAllData(list);
+    Employee  postEmployee( @RequestBody Employee employee) {
+        return demoService.postData(employee);
 
     }
 

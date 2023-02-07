@@ -1,4 +1,4 @@
-package com.example.demorest.Service.impl;
+package com.example.demorest.Service;
 
 import com.example.demorest.Repository.EmployeeRepository;
 import com.example.demorest.model.Employee;
@@ -28,8 +28,8 @@ public class DemoService {
         return employeeRepository.findAll();
     }
 
-    public List<Employee> postAllData(List<Employee> employee) {
-        return employeeRepository.saveAll(employee);
+    public Employee postData(Employee employee) {
+        return employeeRepository.save(employee);
     }
 
 //    public Employee updateData(Long id, Employee employee) {
