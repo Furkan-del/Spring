@@ -3,8 +3,11 @@ package com.example.demorest.model;
 //this class is a data class.we are storing our fields here
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "EMPLOYEE")
 public class Employee {

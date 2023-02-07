@@ -17,10 +17,7 @@ import java.util.List;
 public class EmployeeController {
 
     private final DemoService demoService;
-
-
-
-    public EmployeeController( DemoService demoService) {
+    public EmployeeController(DemoService demoService) {
         this.demoService=demoService;
     }
 
@@ -30,7 +27,6 @@ public class EmployeeController {
     }
 
     @PostMapping("/employeepost")
-
     List<Employee>  postEmployee() {
         Employee employee = new Employee();
         employee.setName("DONALD");

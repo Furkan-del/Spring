@@ -2,7 +2,6 @@ package com.example.demorest.Service.impl;
 
 import com.example.demorest.Repository.EmployeeRepository;
 import com.example.demorest.model.Employee;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class DemoService {
@@ -44,25 +41,25 @@ public class DemoService {
 //    }
 
 
-    public void deleteData(Long id){
- boolean exists=employeeRepository.existsById(id);
-  if(!exists){
-      throw  new IllegalStateException("student with Id"+id+"does not exists");
-  }
-  employeeRepository.deleteById(id);
-   }
+    public void deleteData(Long id) {
+        boolean exists = employeeRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("student with Id" + id + "does not exists");
+        }
+        employeeRepository.deleteById(id);
+    }
 
-   @Transactional
+    @Transactional
     public ResponseEntity<Employee> updateEmployee(Long id, @RequestBody Employee employee) {
-Employee updateEmployee=employeeRepository.findById(id).orElseThrow(()-> new NullPointerException());
+        Employee updateEmployee = employeeRepository.findById(id).orElseThrow(() -> new NullPointerException());
 
-   updateEmployee.setName(employee.getName());
-   updateEmployee.setRole(employee.getRole());
-    employeeRepository.save(employee);
-    return ResponseEntity.ok(updateEmployee);
+        updateEmployee.setName(employee.getName());
+        updateEmployee.setRole(employee.getRole());
+        employeeRepository.save(employee);
+        return ResponseEntity.ok(updateEmployee);
 
 
-   }
+    }
 
 //    @Transactional
 //    save(){
