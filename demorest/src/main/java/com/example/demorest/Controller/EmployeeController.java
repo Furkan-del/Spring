@@ -45,12 +45,6 @@ public class EmployeeController {
 
     }
 
-    @PostMapping("/employeepost1")
-
-    String  postEmployee1() {
-
-        return  "login_page.html";
-    }
 
 
    /* @PutMapping("/employeupdate/{id}")
@@ -90,7 +84,6 @@ public class EmployeeController {
          return demoService.updateEmployee(id,employee);
 
     }
-
 
 
     @DeleteMapping("employeedelete/{studentId}")
