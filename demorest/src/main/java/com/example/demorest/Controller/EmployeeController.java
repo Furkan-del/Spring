@@ -70,7 +70,12 @@ public class EmployeeController {
          return demoService.updateEmployee(id,employee);
 
     }
+    // When they're doing a partial update, they can use HTTP PATCH.
 
+    @PatchMapping("employees/{id}")
+    public void patchhEmployee(@PathVariable("id") Long id,@RequestBody Employee employee){
+         demoService.patchEmployee(id,employee);
+    }
 
     @DeleteMapping("employeedelete/{studentId}")
      void deleteEmployee(@PathVariable("studentId") Long studentId){

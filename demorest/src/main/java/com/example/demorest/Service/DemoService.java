@@ -3,9 +3,11 @@ package com.example.demorest.Service;
 import com.example.demorest.Repository.EmployeeRepository;
 import com.example.demorest.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -22,7 +24,6 @@ public class DemoService {
         this.employeeRepository = employeeRepository;
 
     }
-
 
     public List<Employee> getAllData() {
         return employeeRepository.findAll();
@@ -59,6 +60,18 @@ public class DemoService {
         return ResponseEntity.ok(updateEmployee);
 
 
+    }
+
+    public  ResponseEntity<Employee> patchEmployee(@PathVariable Long id,@RequestBody  Employee employee) {
+       try{
+           Employee employee1=employeeRepository.findById(id).get();
+           employee1.setRole(employee.getRole());
+           return new ResponseEntity<Employee>(employeeRepository.save(employee), HttpStatus.OK);
+
+       }
+          catch (Exception e){
+           return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+          }
     }
 
 //    @Transactional
